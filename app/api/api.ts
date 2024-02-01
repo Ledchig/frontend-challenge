@@ -6,12 +6,9 @@ export interface Cat {
 
 export const getCats = async (): Promise<Cat[]> => {
   try {
-    const key = process.env.API_KEY;
-    const url = process.env.API_URL;
-    if (!key || !url) {
-      throw new Error("API key or URL is missing.");
-    }
-
+    const key = 'live_pMoWlDXjIEMf1KnS2GHVfHRKMKWVTNKWHkmUcr0AbesRqkEaB2D4RuKFx8e1emrQ';
+    const url = 'https://api.thecatapi.com/v1/images/search?limit=15';
+    
     const response = await fetch(url, {
       headers: {
         "x-api-key": key,
