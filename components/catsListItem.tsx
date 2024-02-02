@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import liked from "@/public/liked.svg";
 import unliked from "@/public/unliked.svg";
 import Image from "next/image";
@@ -11,24 +11,45 @@ interface MyProps {
 }
 
 const CatsListItem = ({ url, isLiked, onLikeToogle }: MyProps) => {
-  const [altText, setAltText] = useState<string>(isLiked ? "Liked" : "Not Liked");
+  const [altText, setAltText] = useState<string>(
+    isLiked ? "Liked" : "Not Liked"
+  );
   const [img, setImg] = useState<string>(isLiked ? liked : unliked);
+  const [isHover, setIsHover] = useState(false);
+
+  const handleMouseEnter = () => {
+    setIsHover(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHover(false);
+  };
 
   useEffect(() => {
     setAltText(isLiked ? "Liked" : "Not Liked");
     setImg(isLiked ? liked : unliked);
-  }, [isLiked]);
+    setImg(isHover ? liked : unliked);
+  }, [isLiked, isHover]);
 
   return (
     <div className='relative'>
-      <img className='w-72 h-72 object-cover' src={url} alt='Cat' />
+      <div className="object-cover hover:shadow-2xl hover:-translate-y-1 duration-300">
+        <img
+        className='w-72 h-72 object-cover'
+        src={url}
+        alt='Cat'
+      />
       <button className='w-10 h-10 absolute right-3 bottom-3'>
         <Image
           src={img}
           alt={altText}
           onClick={() => onLikeToogle()}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
         />
       </button>
+      </div>
+      
     </div>
   );
 };
