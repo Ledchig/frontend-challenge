@@ -32,14 +32,14 @@ const CatsListItem = ({ url, isLiked, onLikeToogle }: MyProps) => {
   }, [isLiked, isHover]);
 
   return (
-    <div className='relative'>
-      <div className="object-cover hover:shadow-2xl hover:-translate-y-1 duration-300">
+    <div className='relative group'>
+      <div className="object-cover hover:shadow-[0px_4px_8px_4px_rgb(0,0,0,0.5)] hover:scale-105 duration-300">
         <img
         className='w-72 h-72 object-cover'
         src={url}
         alt='Cat'
       />
-      <button className='w-10 h-10 absolute right-3 bottom-3'>
+      <button className='w-10 h-10 absolute right-3 bottom-3 hidden group-hover:block'>
         <Image
           src={img}
           alt={altText}
