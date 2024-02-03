@@ -28,7 +28,9 @@ const CatsListItem = ({ url, isLiked, onLikeToogle }: MyProps) => {
   useEffect(() => {
     setAltText(isLiked ? "Liked" : "Not Liked");
     setImg(isLiked ? liked : unliked);
-    setImg(isHover ? liked : unliked);
+    if (!isLiked) {
+      setImg(isHover ? liked : unliked);
+    }  
   }, [isLiked, isHover]);
 
   return (
