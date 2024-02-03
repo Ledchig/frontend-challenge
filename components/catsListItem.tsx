@@ -41,7 +41,7 @@ const CatsListItem = ({ url, isLiked, onLikeToogle }: MyProps) => {
         src={url}
         alt='Cat'
       />
-      <button className='w-10 h-10 absolute right-3 bottom-3 hidden group-hover:block'>
+      <button className='w-10 h-10 absolute right-3 bottom-3 hidden group-hover:block hover:scale-105'>
         <Image
           src={img}
           alt={altText}
